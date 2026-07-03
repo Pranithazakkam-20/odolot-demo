@@ -511,15 +511,16 @@ footer{background:var(--asphalt);color:#a49f92;padding:26px 24px;margin-top:60px
       <div id="googleArea">
         <div id="gsiButton" style="display:flex;justify-content:center;"></div>
         <div id="gsiSetup" style="font-size:11px;color:var(--ink-soft);line-height:1.6;margin-top:10px;padding:10px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);display:none;">
-          To enable real Google Sign-In, paste a Google OAuth Client ID below (create one free at
+          To use a different Google OAuth Client ID for this deployment, paste it below
+          (create one free at
           <a href="https://console.cloud.google.com/apis/credentials" target="_blank" style="color:var(--amber-deep);">console.cloud.google.com</a>,
-          and add this page's URL as an authorized origin). This only works once the file is hosted at a real URL you control — it can't be authorized while previewed inside Claude.
+          and add this page's exact URL as an authorized origin).
           <div style="display:flex;gap:6px;margin-top:8px;">
             <input id="gClientId" placeholder="xxxx.apps.googleusercontent.com" style="flex:1;padding:7px 8px;border:1px solid var(--line);border-radius:var(--radius);font-size:11px;">
             <button type="button" class="btn btn-outline" style="padding:7px 10px;font-size:11px;color:var(--ink);border-color:var(--line);" onclick="initGoogleSignIn()">Connect</button>
           </div>
         </div>
-        <button type="button" onclick="document.getElementById('gsiSetup').style.display='block'" style="background:none;border:none;color:var(--ink-soft);font-size:11px;text-decoration:underline;margin-top:8px;">Set up real Google Sign-In</button>
+        <button type="button" onclick="document.getElementById('gsiSetup').style.display='block'" style="background:none;border:none;color:var(--ink-soft);font-size:11px;text-decoration:underline;margin-top:8px;">Use a different Google Client ID</button>
       </div>
 
       <div class="divider">OR USE AN ACCOUNT ON THIS DEVICE</div>
@@ -720,8 +721,8 @@ async function handleCredentialResponse(response){
   renderAuthSlot();
   switchView('dashboard');
 }
-function initGoogleSignIn(){
-  const clientId = document.getElementById('gClientId').value.trim();
+function initGoogleSignIn(clientIdOverride){
+  const clientId = clientIdOverride || document.getElementById('gClientId').value.trim();
   if(!clientId || !window.google){ return; }
   try{
     google.accounts.id.initialize({client_id: clientId, callback: handleCredentialResponse});
@@ -730,6 +731,16 @@ function initGoogleSignIn(){
     console.error(err);
   }
 }
+// Pre-configured Client ID for this deployment — visitors don't need to set anything up.
+const CONFIGURED_GOOGLE_CLIENT_ID = '1069837938917-1sjct4dbjv0f92kb66q08t03lbmvhn8u.apps.googleusercontent.com';
+window.addEventListener('load', ()=>{
+  const tryInit = setInterval(()=>{
+    if(window.google && google.accounts){
+      clearInterval(tryInit);
+      initGoogleSignIn(CONFIGURED_GOOGLE_CLIENT_ID);
+    }
+  }, 200);
+});
 
 /* ---------------- Bell ---------------- */
 document.getElementById('bellBtn').addEventListener('click', ()=>{
