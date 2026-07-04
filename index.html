@@ -334,8 +334,8 @@ footer{background:var(--asphalt);color:#a49f92;padding:26px 24px;margin-top:60px
         <button class="bell-btn" id="bellBtn">&#128276;<span class="bell-dot"></span></button>
         <div class="notif-panel" id="notifPanel">
           <h4>Notifications</h4>
-          <div class="notif-item"><b>New offer</b>2019 Honda Civic — buyer offered $12,400.</div>
-          <div class="notif-item"><b>Listing approved</b>Your 2021 Ford Ranger is now live.</div>
+          <div class="notif-item"><b>New offer</b>2019 Maruti Swift — buyer offered ₹5,20,000.</div>
+          <div class="notif-item"><b>Listing approved</b>Your 2020 Tata Nexon is now live.</div>
           <div class="notif-item"><b>Review received</b>You got a 5-star rating from a buyer.</div>
         </div>
       </div>
@@ -360,10 +360,13 @@ footer{background:var(--asphalt);color:#a49f92;padding:26px 24px;margin-top:60px
       </div>
       <div class="tag-card">
         <div class="tag-label">FEATURED LISTING · #OD-1042</div>
-        <div class="tag-model">2021 Toyota RAV4 XLE</div>
-        <div class="odo" id="heroOdo"></div>
+        <div class="tag-model">2021 Tata Nexon XZ+</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:14px;">
+          <span class="mono" style="font-size:20px;font-weight:700;color:var(--ink-soft);">₹</span>
+          <div class="odo" id="heroOdo" style="margin-top:0;"></div>
+        </div>
         <div class="tag-foot">
-          <span>28,400 mi · Austin, TX</span>
+          <span>28,400 km · Ahmedabad, GJ</span>
           <div class="verified-stamp">ID<br>CHECK</div>
         </div>
       </div>
@@ -387,8 +390,8 @@ footer{background:var(--asphalt);color:#a49f92;padding:26px 24px;margin-top:60px
         </div>
         <div class="filter-group">
           <label>Max price ($)</label>
-          <input type="range" id="priceRange" min="1000" max="60000" step="500" value="60000">
-          <div class="mono" id="priceRangeVal" style="font-size:12px;margin-top:4px;color:var(--ink-soft);">Up to $60,000</div>
+          <input type="range" id="priceRange" min="30000" max="2000000" step="10000" value="2000000">
+          <div class="mono" id="priceRangeVal" style="font-size:12px;margin-top:4px;color:var(--ink-soft);">Up to ₹20,00,000</div>
         </div>
         <div class="filter-group">
           <label>Location</label>
@@ -428,7 +431,7 @@ footer{background:var(--asphalt);color:#a49f92;padding:26px 24px;margin-top:60px
       </div>
       <div class="form-row">
         <div><label>Year</label><input required id="f-year" type="number" min="1970" max="2026" placeholder="2019"></div>
-        <div><label>Price ($)</label><input required id="f-price" type="number" min="0" placeholder="14500"></div>
+        <div><label>Price (₹)</label><input required id="f-price" type="number" min="0" placeholder="550000"></div>
       </div>
       <div class="form-row">
         <div><label>Mileage</label><input required id="f-mileage" type="number" min="0" placeholder="32000"></div>
@@ -439,7 +442,7 @@ footer{background:var(--asphalt);color:#a49f92;padding:26px 24px;margin-top:60px
       </div>
       <div class="form-row">
         <div><label>Type</label>
-          <select id="f-type"><option>Car</option><option>Truck</option><option>Motorcycle</option><option>SUV</option></select>
+          <select id="f-type"><option>Car</option><option>SUV</option><option>Van</option><option>Truck</option><option>Motorcycle</option><option>Scooter</option></select>
         </div>
         <div><label>Location</label><input required id="f-location" placeholder="City, state"></div>
       </div>
@@ -550,35 +553,51 @@ const CAR_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-w
 
 const WIKI = 'https://commons.wikimedia.org/wiki/Special:FilePath/';
 const SEED_PHOTOS = {
-  1: WIKI + encodeURIComponent('Honda Civic Sedan (FE1-FE4) Washington DC Metro Area, USA.jpg') + '?width=900',
-  2: WIKI + encodeURIComponent('2019 Toyota RAV4 Hybrid 01.jpg') + '?width=900',
-  3: WIKI + encodeURIComponent('2021 Ford Ranger XL, front 6.1.22.jpg') + '?width=900',
-  4: WIKI + encodeURIComponent('Man Returning on Harley-Davidson Iron 883 - Las Vegas Ride for Kids 2019.jpg') + '?width=900',
-  5: WIKI + encodeURIComponent('2020 Subaru Outback AWD, front.jpg') + '?width=900',
-  6: WIKI + encodeURIComponent('2017 Chevrolet Silverado 1500 LT Z71.jpg') + '?width=900',
-  7: WIKI + encodeURIComponent('20 Mazda MX-5 Miata Club.jpg') + '?width=900',
-  8: WIKI + encodeURIComponent('2021 Black Yamaha MT-07.jpg') + '?width=900',
+  1: WIKI + encodeURIComponent('Maruti Suzuki Swift 4456.JPG') + '?width=900',
+  2: WIKI + encodeURIComponent('2020 Hyundai i20 1.5 Asta (O) Diesel (India) front view.png') + '?width=900',
+  3: WIKI + encodeURIComponent('0 Honda City (7th generation) sedan.jpg') + '?width=900',
+  4: WIKI + encodeURIComponent('2018 Tata Nexon XM.jpg') + '?width=900',
+  5: WIKI + encodeURIComponent('Mahindra Scorpio.jpg') + '?width=900',
+  6: WIKI + encodeURIComponent('Toyota Innova Crysta 2.4 Z front right.jpg') + '?width=900',
+  7: WIKI + encodeURIComponent('Tata ACE HT.jpg') + '?width=900',
+  8: WIKI + encodeURIComponent('Ashok Leyland U truck.jpg') + '?width=900',
+  9: WIKI + encodeURIComponent('Royal Enfield Classic 350 (2017 Model Year).jpg') + '?width=900',
+  10: WIKI + encodeURIComponent('Bajaj Pulser 180 motor bike.JPG') + '?width=900',
+  11: WIKI + encodeURIComponent('Honda Activa Scooter at Bakkannapalem.JPG') + '?width=900',
+  12: WIKI + encodeURIComponent('2022 Maruti Suzuki Baleno Alpha (India) front view.jpg') + '?width=900',
+  13: WIKI + encodeURIComponent('Kia Seltos SP2 PE Snow White Pearl (6) (cropped).jpg') + '?width=900',
+  14: WIKI + encodeURIComponent('2021 Mahindra XUV700 2.2 AX7 (India) front view.png') + '?width=900',
+  15: WIKI + encodeURIComponent('Hero Splendor+, Bangalore (2025).jpg') + '?width=900',
+  16: WIKI + encodeURIComponent('TVS Jupiter.jpg') + '?width=900',
 };
 
 const DEFAULT_LISTINGS = [
-  {id:1,make:"Honda",model:"Civic",year:2019,price:14200,mileage:32000,condition:"Used",type:"Car",location:"Austin, TX",status:"active",views:412,desc:"Single owner, full service history, new tires last spring.",seller:"M. Alvarez",rating:4.8,photo:SEED_PHOTOS[1]},
-  {id:2,make:"Toyota",model:"RAV4 XLE",year:2021,price:24800,mileage:28400,condition:"Like New",type:"SUV",location:"Austin, TX",status:"active",views:601,desc:"One accident-free owner, AWD, adaptive cruise control.",seller:"J. Kim",rating:4.9,photo:SEED_PHOTOS[2]},
-  {id:3,make:"Ford",model:"Ranger XLT",year:2021,price:27950,mileage:19200,condition:"Like New",type:"Truck",location:"Denver, CO",status:"active",views:255,desc:"4x4, tow package, bed liner included.",seller:"D. Ortiz",rating:4.6,photo:SEED_PHOTOS[3]},
-  {id:4,make:"Harley-Davidson",model:"Iron 883",year:2018,price:7600,mileage:9800,condition:"Fair",type:"Motorcycle",location:"Tampa, FL",status:"active",views:98,desc:"Runs great, minor cosmetic wear on tank.",seller:"R. Cole",rating:4.3,photo:SEED_PHOTOS[4]},
-  {id:5,make:"Subaru",model:"Outback",year:2020,price:21300,mileage:41000,condition:"Used",type:"SUV",location:"Portland, OR",status:"active",views:340,desc:"AWD, roof rack, recent brake service.",seller:"L. Nguyen",rating:4.7,photo:SEED_PHOTOS[5]},
-  {id:6,make:"Chevrolet",model:"Silverado 1500",year:2017,price:18500,mileage:66000,condition:"Fair",type:"Truck",location:"Phoenix, AZ",status:"active",views:189,desc:"Work-ready, bed liner, tow hitch.",seller:"B. Franks",rating:4.1,photo:SEED_PHOTOS[6]},
-  {id:7,make:"Mazda",model:"MX-5 Miata",year:2016,price:15900,mileage:37200,condition:"Used",type:"Car",location:"San Diego, CA",status:"active",views:522,desc:"Soft top in great shape, garage kept.",seller:"S. Patel",rating:4.9,photo:SEED_PHOTOS[7]},
-  {id:8,make:"Yamaha",model:"MT-07",year:2022,price:6200,mileage:3100,condition:"Like New",type:"Motorcycle",location:"Chicago, IL",status:"pending",views:41,desc:"Barely ridden, still under factory warranty.",seller:"demo-seller",rating:4.8,photo:SEED_PHOTOS[8]},
+  {id:1,make:"Maruti Suzuki",model:"Swift VXi",year:2019,price:550000,mileage:42000,condition:"Used",type:"Car",location:"Pune, MH",status:"active",views:412,desc:"Single owner, full service history, new tyres last year.",seller:"R. Sharma",rating:4.8,photo:SEED_PHOTOS[1]},
+  {id:2,make:"Hyundai",model:"i20 Asta",year:2020,price:720000,mileage:35000,condition:"Like New",type:"Car",location:"Bengaluru, KA",status:"active",views:601,desc:"One accident-free owner, sunroof, reverse camera.",seller:"A. Iyer",rating:4.9,photo:SEED_PHOTOS[2]},
+  {id:3,make:"Honda",model:"City VX",year:2018,price:680000,mileage:58000,condition:"Used",type:"Car",location:"Hyderabad, TS",status:"active",views:334,desc:"Well maintained, recent service at authorised centre.",seller:"K. Reddy",rating:4.6,photo:SEED_PHOTOS[3]},
+  {id:4,make:"Tata",model:"Nexon XZ+",year:2021,price:950000,mileage:28000,condition:"Like New",type:"SUV",location:"Ahmedabad, GJ",status:"active",views:388,desc:"5-star safety rating, touchscreen infotainment, low mileage.",seller:"V. Nair",rating:4.7,photo:SEED_PHOTOS[4]},
+  {id:5,make:"Mahindra",model:"Scorpio S11",year:2017,price:850000,mileage:72000,condition:"Fair",type:"SUV",location:"Jaipur, RJ",status:"active",views:255,desc:"Tough and reliable, recently serviced suspension.",seller:"P. Singh",rating:4.3,photo:SEED_PHOTOS[5]},
+  {id:6,make:"Toyota",model:"Innova Crysta",year:2019,price:1650000,mileage:65000,condition:"Used",type:"Van",location:"Mumbai, MH",status:"active",views:522,desc:"7-seater, diesel, ideal for family or fleet use.",seller:"D. Joshi",rating:4.9,photo:SEED_PHOTOS[6]},
+  {id:7,make:"Tata",model:"Ace",year:2020,price:420000,mileage:45000,condition:"Used",type:"Truck",location:"Coimbatore, TN",status:"active",views:189,desc:"Mini truck, well maintained, ready for commercial use.",seller:"N. Gupta",rating:4.4,photo:SEED_PHOTOS[7]},
+  {id:8,make:"Ashok Leyland",model:"U Truck",year:2016,price:1150000,mileage:180000,condition:"Fair",type:"Truck",location:"Ludhiana, PB",status:"active",views:142,desc:"Heavy-duty hauler, engine recently overhauled.",seller:"T. Menon",rating:4.0,photo:SEED_PHOTOS[8]},
+  {id:9,make:"Royal Enfield",model:"Classic 350",year:2019,price:135000,mileage:18000,condition:"Like New",type:"Motorcycle",location:"Chennai, TN",status:"active",views:498,desc:"Single owner, garage kept, thumping in great shape.",seller:"J. Khan",rating:4.9,photo:SEED_PHOTOS[9]},
+  {id:10,make:"Bajaj",model:"Pulsar 180",year:2018,price:68000,mileage:32000,condition:"Used",type:"Motorcycle",location:"Nagpur, MH",status:"active",views:210,desc:"Daily commuter, decent mileage, new battery.",seller:"M. Verma",rating:4.2,photo:SEED_PHOTOS[10]},
+  {id:11,make:"Honda",model:"Activa 5G",year:2021,price:58000,mileage:15000,condition:"Like New",type:"Scooter",location:"Kolkata, WB",status:"pending",views:41,desc:"Barely used, single owner, still under warranty.",seller:"demo-seller",rating:4.8,photo:SEED_PHOTOS[11]},
+  {id:12,make:"Maruti Suzuki",model:"Baleno Alpha",year:2022,price:680000,mileage:22000,condition:"Like New",type:"Car",location:"New Delhi, DL",status:"active",views:376,desc:"Premium hatchback, automatic, sunroof, low running.",seller:"S. Kapoor",rating:4.8,photo:SEED_PHOTOS[12]},
+  {id:13,make:"Kia",model:"Seltos HTX",year:2021,price:1250000,mileage:31000,condition:"Like New",type:"SUV",location:"Mumbai, MH",status:"active",views:445,desc:"Feature-loaded, ventilated seats, panoramic sunroof.",seller:"R. Deshpande",rating:4.7,photo:SEED_PHOTOS[13]},
+  {id:14,make:"Mahindra",model:"XUV700 AX7",year:2022,price:1690000,mileage:19000,condition:"Like New",type:"SUV",location:"Bengaluru, KA",status:"active",views:512,desc:"ADAS-equipped, 7-seater, top trim, still under warranty.",seller:"A. Rao",rating:4.9,photo:SEED_PHOTOS[14]},
+  {id:15,make:"Hero",model:"Splendor Plus",year:2020,price:42000,mileage:28000,condition:"Used",type:"Motorcycle",location:"Lucknow, UP",status:"active",views:167,desc:"Fuel-efficient commuter, recently serviced, new chain sprocket.",seller:"I. Ansari",rating:4.5,photo:SEED_PHOTOS[15]},
+  {id:16,make:"TVS",model:"Jupiter",year:2019,price:48000,mileage:24000,condition:"Used",type:"Scooter",location:"Kochi, KL",status:"active",views:132,desc:"Smooth ride, good mileage, single owner.",seller:"G. Menon",rating:4.4,photo:SEED_PHOTOS[16]},
 ];
 
 let listings = [];
-let nextId = 9;
+let nextId = 17;
 let storageReady = false;
 
 const reviewsData = [
-  {listing:"Honda Civic",author:"K. Diaz",rating:5,text:"Smooth transaction, car exactly as described, escrow made it painless."},
-  {listing:"Toyota RAV4",author:"T. Brooks",rating:5,text:"Seller was responsive and honest about a small ding on the bumper."},
-  {listing:"Ford Ranger",author:"A. Guzman",rating:4,text:"Good deal overall, pickup took a bit longer to schedule."},
+  {listing:"Maruti Swift",author:"K. Deshmukh",rating:5,text:"Smooth transaction, car exactly as described, escrow made it painless."},
+  {listing:"Hyundai i20",author:"T. Bhatt",rating:5,text:"Seller was responsive and honest about a small scratch on the bumper."},
+  {listing:"Tata Nexon",author:"A. Gupta",rating:4,text:"Good deal overall, pickup took a bit longer to schedule."},
 ];
 
 let currentUser = null; // {email, role, name, picture}
@@ -761,10 +780,10 @@ function renderOdometer(el, value){
     el.appendChild(span);
   }
 }
-renderOdometer(document.getElementById('heroOdo'), 24800);
+renderOdometer(document.getElementById('heroOdo'), 950000);
 
 /* ---------------- Filters state ---------------- */
-const TYPES = ["Car","SUV","Truck","Motorcycle"];
+const TYPES = ["Car","SUV","Van","Truck","Motorcycle","Scooter"];
 const CONDS = ["Used","Like New","Fair","Needs Work"];
 let activeTypes = new Set();
 let activeConds = new Set();
@@ -794,7 +813,7 @@ function buildChips(){
 buildChips();
 
 document.getElementById('priceRange').addEventListener('input', e=>{
-  document.getElementById('priceRangeVal').textContent = 'Up to $' + Number(e.target.value).toLocaleString();
+  document.getElementById('priceRangeVal').textContent = 'Up to ₹' + Number(e.target.value).toLocaleString('en-IN');
   renderGrid();
 });
 document.getElementById('locFilter').addEventListener('input', renderGrid);
@@ -834,9 +853,9 @@ function renderGrid(){
       <div class="card-media"><span class="badge used">${l.condition}</span>${l.photo ? `<img src="${l.photo}" alt="${l.year} ${l.make} ${l.model}" loading="lazy">` : CAR_ICON}</div>
       <div class="card-body">
         <h4>${l.year} ${l.make} ${l.model}</h4>
-        <div class="card-meta">${l.mileage.toLocaleString()} mi · ${l.type}</div>
+        <div class="card-meta">${l.mileage.toLocaleString('en-IN')} km · ${l.type}</div>
         <div class="card-price">
-          <span class="price">$${l.price.toLocaleString()}</span>
+          <span class="price">₹${l.price.toLocaleString('en-IN')}</span>
           <span class="loc">${l.location}</span>
         </div>
       </div>
@@ -854,11 +873,11 @@ function openDetail(id){
         ${l.photo && l.photo.includes('wikimedia') ? `<div class="photo-credit">Reference photo: Wikimedia Commons</div>` : ''}
         <h1 style="font-size:26px;margin-top:20px;">${l.year} ${l.make} ${l.model}</h1>
         <table class="spec-table">
-          <tr><td>Mileage</td><td class="mono">${l.mileage.toLocaleString()} mi</td></tr>
+          <tr><td>Mileage</td><td class="mono">${l.mileage.toLocaleString('en-IN')} km</td></tr>
           <tr><td>Condition</td><td>${l.condition}</td></tr>
           <tr><td>Type</td><td>${l.type}</td></tr>
           <tr><td>Location</td><td>${l.location}</td></tr>
-          <tr><td>VIN</td><td class="mono">1HG•••••••4${l.id}82</td></tr>
+          <tr><td>Reg. Number</td><td class="mono">••-••-••••${l.id}</td></tr>
         </table>
         <div class="desc-block">${l.desc}</div>
         <div class="reviews">
@@ -871,7 +890,7 @@ function openDetail(id){
         </div>
       </div>
       <div class="side-panel">
-        <div class="side-price mono">$${l.price.toLocaleString()}</div>
+        <div class="side-price mono">₹${l.price.toLocaleString('en-IN')}</div>
         <div class="escrow-note">Payment held in escrow until both parties confirm the handover — funds release automatically 48 hours after delivery is marked complete.</div>
         <button class="btn btn-amber" onclick="alert('This is a demo — no real payment is processed.')">Buy now</button>
         <button class="btn btn-outline" onclick="alert('Offer form would open here.')">Make an offer</button>
@@ -971,7 +990,7 @@ function renderDashboard(){
     tbody.innerHTML = mine.map(l=>`
       <tr>
         <td>${l.year} ${l.make} ${l.model}</td>
-        <td class="mono">$${l.price.toLocaleString()}</td>
+        <td class="mono">₹${l.price.toLocaleString('en-IN')}</td>
         <td><span class="badge ${l.status}">${l.status}</span></td>
         <td class="mono">${l.views}</td>
         <td class="row-actions">
@@ -991,10 +1010,10 @@ async function removeListing(id){ listings = listings.filter(x=>x.id!==id); awai
 
 /* ---------------- Admin ---------------- */
 const mockUsers = [
-  {name:"M. Alvarez",role:"Seller",joined:"2025-03-11",rating:4.8},
-  {name:"J. Kim",role:"Seller",joined:"2025-01-22",rating:4.9},
-  {name:"K. Diaz",role:"Buyer",joined:"2025-06-02",rating:5.0},
-  {name:"T. Brooks",role:"Buyer",joined:"2024-11-19",rating:4.7},
+  {name:"R. Sharma",role:"Seller",joined:"2025-03-11",rating:4.8},
+  {name:"A. Iyer",role:"Seller",joined:"2025-01-22",rating:4.9},
+  {name:"K. Deshmukh",role:"Buyer",joined:"2025-06-02",rating:5.0},
+  {name:"A. Gupta",role:"Buyer",joined:"2024-11-19",rating:4.7},
   {name:"Admin User",role:"Admin",joined:"2024-01-01",rating:"—"},
 ];
 function renderAdmin(){
@@ -1003,7 +1022,7 @@ function renderAdmin(){
     <tr>
       <td>${l.year} ${l.make} ${l.model}</td>
       <td>${l.seller}</td>
-      <td class="mono">$${l.price.toLocaleString()}</td>
+      <td class="mono">₹${l.price.toLocaleString('en-IN')}</td>
       <td><span class="badge ${l.status}">${l.status}</span></td>
       <td class="row-actions">
         ${l.status==='pending' ? `<button class="ok" onclick="approveListing(${l.id})">Approve</button>` : ''}
